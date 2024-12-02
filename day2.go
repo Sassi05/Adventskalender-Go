@@ -21,11 +21,10 @@ func main() {
 	var levelsNum []int
 	var count int
 
-	//Den Text auf zwei String Arrays aufteilen
 	scanner := bufio.NewScanner(file)
 	for scanner.Scan() {
 		line := scanner.Text()
-		//Hier wird die line an den Leerzeichen gesplittet, es gibt aber zwei Leerzeichen (da muss man auch erstmal drauf kommen, bei der Fehlersuche ;-))
+		//Heute mal Textzeile mit Fields splitten
 		levels = strings.Fields(line)
 
 		//Die Arrayinhalte von String zu Int parsen und in Int Array einlesen
@@ -41,10 +40,10 @@ func main() {
 			levelsNum = append(levelsNum, num)
 
 		}
-		fmt.Println(levelsNum)
+		//Einzelne Ebenen auf "Sicherheit" prüfen
 		result := proofLevels(levelsNum)
-		fmt.Println(result)
 		count = count + result
+		//Array wieder leeren
 		levelsNum = []int{}
 	}
 
